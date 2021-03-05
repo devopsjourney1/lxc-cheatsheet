@@ -2,10 +2,12 @@
 https://linuxcontainers.org/lxc/getting-started/
 
 # LXD Initilization
+```shell
 lxd init
-
+```
 
 ## Basic LXC Commands
+```shell
 lxc list
 lxc list -c n,s,4,image.description:image
 lxc image alias list ubuntu: '18.04'
@@ -23,20 +25,21 @@ lxc config edit ubuntu1
 
 
 lxc file push ~/.ssh/authorized_keys test123/root/.ssh/authorized_keys
-
+```
 
 # Snapshots
+```shell
 lxc snapshot CONTAINERNAME SNAPNAME 
 lxc info CONTAINERNAME
 lxc restore CONTAINERNAME SNAPNAME 
 lxc delete CONTAINERNAME/SNAPNAME
-
+```
 
 ### Access container files
+```shell
 lxc file pull CONTAINERNAME/etc/passwd /tmp/mypasswd
 lxc file push /tmp/mypasswd CONTAINERNAME/etc/passwd 
 lxc file edit CONTAINERNAME/etc/passwd 
-
 
 lxc snapshot CONTAINERNAME SNAPNAME    # SNAPNAME is optional; default name snap*X*
 lxc restore CONTAINERNAME SNAPNAME     # resets the container to snapshot
@@ -44,15 +47,16 @@ lxc copy CONTAINERNAME/SNAPNAME NEWCONTAINER               # new container from 
 lxc delete CONTAINERNAME/SNAPNAME
 lxc info CONTAINERNAME                 # lists snapshots among other info
 lxc move CONTAINERNAME/SNAPNAME CONTAINERNAME/NEWSNAPNAME  # rename snapshot
-
+```
 
 ### Setup networking
+```shell
 cat /etc/netplan/50-cloud-init.yaml
 lxc config device add ubuntu1 eth0 nic nictype=bridged parent=br0 name=eth0
 lxc restart alpine1
 
 lxc config device remove alpinenode1 eth0
-
+```
 #################################################################################
 
 # Useful LXD commands
@@ -143,3 +147,4 @@ lxc copy CONTAINERNAME/SNAPNAME NEWCONTAINER               # new container from 
 lxc delete CONTAINERNAME/SNAPNAME
 lxc info CONTAINERNAME                 # lists snapshots among other info
 lxc move CONTAINERNAME/SNAPNAME CONTAINERNAME/NEWSNAPNAME  # rename snapshot
+```
